@@ -47,7 +47,8 @@ def encode_contents(post_list):
     file_contents = ""
     # The contents of the README file as a Python string array
     for post in post_list:
-        file_contents_string = post['title'] + "[" + post['link'] + "]\n" 
+        file_contents_string = "[" + post['title'] + "]" + "(" + post['link'] + ")" 
+        print(file_contents_string)
         # Encode the contents of the file as a base64 encoded string
         file_contents_base64 = base64.b64encode(file_contents_string.encode()).decode()
         file_contents += file_contents_base64
@@ -63,7 +64,7 @@ repo_name = "Posts-from-my-TistoryBlog"
 # The endpoint for the GitHub API to edit a file in a repository
 url = f"https://api.github.com/repos/{repo_owner}/{repo_name}/contents/README.md"
 
-file_contents = "bXkgbmV3IHJlYWRtZSBjb250ZW50Cg=="
+file_contents = encode_contents(post_list)
 
 # The commit message
 commit_message = "Update README - new tistory blog posts"
