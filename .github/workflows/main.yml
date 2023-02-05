@@ -33,7 +33,7 @@ jobs:
         push: true
 
     - name: Load Github Token
-        run: echo "${{ secrets.GITHUB_TOKEN }}" > data
+      run: echo "${{ secrets.GITHUB_TOKEN }}" > data
 
     - name: Create issue
       uses: peter-evans/create-issue@v2
