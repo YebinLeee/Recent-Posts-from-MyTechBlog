@@ -2,11 +2,14 @@ import requests
 from bs4 import BeautifulSoup
 import json
 import base64
+from datetime import datetime
 
 # Reference: https://docs.github.com/ko/rest/repos/contents?apiVersion=2022-11-28#create-or-update-file-contents
 # Reference: https://truman.tistory.com/108
 
 # Make a request to the website
+now = datetime.now()
+str_now = now.strftime('%Y-%m-%d %H:%M:%S')
 response = requests.get('https://dream-and-develop.tistory.com')
 
 # Parse the HTML content of the page
@@ -28,20 +31,17 @@ for title, link, protected in zip(post_titles, post_links, post_protected):
     }
     post_list.append(post)
 
-
 with open('data', 'r') as file:
     access_token = file.read().strip()
-    print(access_token)
-    
+    print(access_token)    
 
 def encode_contents(post_list):
-    file_contents = ""
+    file_contents = "# 개인 기술 블로그의 최신 글 모아보기 <br>"
    
     for post in post_list:
         if '보호되어 있는 글입니다.' in str(post['protected']):
-            print(post['protected'])
             continue
-        file_contents_string = "- [" + post['title'] + "]" + "(" + post['link'] + ")\n" 
+        file_contents_string = "\n- [" + post['title'] + "]" + "(" + post['link'] + ")" 
         
         file_contents += file_contents_string
         
@@ -60,6 +60,7 @@ url = f"https://api.github.com/repos/{repo_name}/contents/{file_name}"
 
 
 
+# 이전 version 가져오기
 def get_file_sha():
     headers_for_get = {
         "Authorization": f"Token {access_token}",
@@ -93,7 +94,7 @@ def put_new_contents():
     file_contents = encode_contents(post_list)
     
     # The commit message
-    commit_message = "Update README - new tistory blog posts"
+    commit_message = str_now + " : Update README - new tistory blog posts"
 
     # The headers for the API request
     headers = {
@@ -117,11 +118,13 @@ def put_new_contents():
     else:
         print(f"Failed to update the README file. Response: {response.text}")
     
+    
+
 def patch_new_contents():
     file_contents = encode_contents(post_list)
 
     # The commit message
-    commit_message = "Update README - new tistory blog posts"
+    commit_message = str_now + "  |  blog posts updated"
 
     # The headers for the API request
     headers = {
