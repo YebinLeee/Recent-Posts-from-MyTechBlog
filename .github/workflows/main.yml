@@ -2,7 +2,7 @@ name: Get Recent Post
 
 on:
   schedule:
-    - cron: '* * * * *' # Run every minute
+    - cron: '5 * * * *' # Run every minute
 
 jobs:
   build:
@@ -19,8 +19,8 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip freeze > requirements.txt
         pip install -r requirements.txt
+        pip freeze > requirements.txt
 
     - name: Execute main.py
       run: |
