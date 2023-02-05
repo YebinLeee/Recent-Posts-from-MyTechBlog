@@ -29,5 +29,18 @@ jobs:
       uses: EndBug/add-and-commit@v4
       with:
         add: 'README.md'
-        commit_message: 'Update README with recent posts'
+        commit_message: '$(date "+%Y-%m-%d %H:%M:%S") | Update README with recent posts'
         push: true
+
+    - name: Load Github Token
+        run: echo "${{ secrets.GITHUB_TOKEN }}" > data
+
+    - name: Create issue
+      uses: peter-evans/create-issue@v2
+      with:
+        repo-token: $(cat data)
+        title: '$(date "+%Y-%m-%d %H:%M:%S") | Update README with recent posts'
+        body: |
+          The README file has been updated with the latest posts.
+          Check the file for updates.
+      labels: automation, update
