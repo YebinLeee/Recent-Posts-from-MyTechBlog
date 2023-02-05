@@ -1,4 +1,13 @@
-# 개인 기술 블로그의 최신 글 모아보기 <br><br>   
+# 개인 기술 블로그의 최신 글 모아보기 <br> 
+ ## Tech 
+ - `Github's REST API`, [Reference](https://docs.github.com/ko/rest/repos/contents?apiVersion=2022-11-28#create-or-update-file-contents) 
+ - Web Scraping using `beautifulsoup4` 
+ - `base64 encoding` 
+ - Automation using `Github Actions Workflows` 
+
+ ## Recent Blog Posts 
+
+
 - [[Spring] @Autowired를 통한 의존 관계 주입 시 주입할 스프링 빈이 없는 경우 처리하는 방법](https://dream-and-develop.tistory.com/435)
 - [[Spring] 의존 관계 자동 주입의 4가지 방법과 특징, 생성자를 통해 주입해야하는 이유](https://dream-and-develop.tistory.com/434)
 - [[Spring] 컴포넌트 스캔의 중복 등록과 충돌 (수동 빈 등록의 우선권과 오버라이딩 에러)](https://dream-and-develop.tistory.com/432)
