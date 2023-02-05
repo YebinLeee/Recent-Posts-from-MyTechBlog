@@ -34,12 +34,3 @@ jobs:
 
     - name: Load Github Token
       run: echo "${{ secrets.GITHUB_TOKEN }}" > data
-
-    - name: Create issue
-      uses: Yebinleee/create-issue@v2
-      with:
-        repo-token: $(cat data)
-        title: '$(date "+%Y-%m-%d %H:%M:%S") | Update README with recent posts'
-        body: |
-          The README file has been updated with the latest posts.
-          Check the file for updates.
