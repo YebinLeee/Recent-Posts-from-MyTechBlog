@@ -36,7 +36,7 @@ jobs:
       run: echo "${{ secrets.GITHUB_TOKEN }}" > data
 
     - name: Create issue
-      uses: peter-evans/create-issue@v2
+      uses: Yebinleee/create-issue@v2
       with:
         repo-token: $(cat data)
         title: '$(date "+%Y-%m-%d %H:%M:%S") | Update README with recent posts'
