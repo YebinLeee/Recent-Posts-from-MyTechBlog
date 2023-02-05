@@ -2,7 +2,7 @@ name: Get Recent Post
 
 on:
   schedule:
-    - cron: '* * * * *' # Run every hour
+    - cron: '* * * * *' # Run every minute
 
 jobs:
   build:
@@ -43,4 +43,3 @@ jobs:
         body: |
           The README file has been updated with the latest posts.
           Check the file for updates.
-        labels: automation, update
