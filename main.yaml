@@ -1,0 +1,33 @@
+name: Update README
+
+on:
+  schedule:
+    - cron: '0 * * * *' # Run every hour
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+
+    - name: Execute main.py
+      run: |
+        python main.py
+
+    - name: Commit and push changes
+      uses: EndBug/add-and-commit@v4
+      with:
+        add: 'README.md'
+        commit_message: 'Update README with recent posts'
+        push: true
