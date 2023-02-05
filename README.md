@@ -1,6 +1,6 @@
 # 개인 기술 블로그의 최신 글 모아보기 <br> 
  ## Tech 
- - `Github's REST API` 
+ - `Github's REST API`, [Reference](https://docs.github.com/ko/rest/repos/contents?apiVersion=2022-11-28#create-or-update-file-contents) 
  - Web Scraping using `beautifulsoup4` 
  - `base64 encoding` 
  - Automation using `Github Actions Workflows` 
