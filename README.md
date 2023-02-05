@@ -1,8 +1,11 @@
 # 개인 기술 블로그의 최신 글 모아보기 <br> 
+ ## Tech 
  - `Github's REST API` 
  - Web Scraping using `beautifulsoup4` 
  - `base64 encoding` 
  - Automation using `Github Actions Workflows` 
+
+ ## Recent Blog Posts 
 
 
 - [[Spring] @Autowired를 통한 의존 관계 주입 시 주입할 스프링 빈이 없는 경우 처리하는 방법](https://dream-and-develop.tistory.com/435)
