@@ -4,9 +4,6 @@ import json
 import base64
 from datetime import datetime
 
-# Reference: https://docs.github.com/ko/rest/repos/contents?apiVersion=2022-11-28#create-or-update-file-contents
-# Reference: https://truman.tistory.com/108
-
 # Make a request to the website
 now = datetime.now()
 str_now = now.strftime('%Y-%m-%d %H:%M:%S')
@@ -36,7 +33,7 @@ with open('data', 'r') as file:
     print(access_token)    
 
 def encode_contents(post_list):
-    file_contents = "# 개인 기술 블로그의 최신 글 모아보기 <br>"
+    file_contents = "# 개인 기술 블로그의 최신 글 모아보기 <br> \n ## Tech \n - `Github's REST API`, [Reference](https://docs.github.com/ko/rest/repos/contents?apiVersion=2022-11-28#create-or-update-file-contents) \n - Web Scraping using `beautifulsoup4` \n - `base64 encoding` \n - Automation using `Github Actions Workflows` \n\n ## Recent Blog Posts \n\n"
    
     for post in post_list:
         if '보호되어 있는 글입니다.' in str(post['protected']):
@@ -51,7 +48,7 @@ def encode_contents(post_list):
 
 # Replace with the owner and repository name
 repo_owner = "yebinleee"
-repo_name = "Posts-from-my-TistoryBlog"
+repo_name = "Recent-Posts-from-MyTechBlog"
 file_name = "README.md"
 
 # The endpoint for the GitHub API to edit a file in a repository
