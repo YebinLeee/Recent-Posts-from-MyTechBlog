@@ -1,0 +1,29 @@
+name: Daily Update - Recent Posts
+
+on:
+  schedule:
+    - cron: '* * * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Run main.py
+      run: python main.py > output.txt
+
+    - name: Create Issue
+      uses: actions/github-script@v3
+      with:
+        script: |
+          const octokit = require('@octokit/rest')();
+          octokit.authenticate({
+            type: 'token',
+            token: ${{ secrets.TOKEN }}
+          });
+          octokit.issues.create({
+            owner: "${{ github.yebinleee }}",
+            repo: "${{ github.Recent-Posts-from-MyTechBlog }}",
+            title: "Recent Posts from Blog Updated",
+            body: body
+          });

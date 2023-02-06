@@ -34,7 +34,7 @@ for title, link, protected in zip(post_titles, post_links, post_protected):
 #    access_token = file.read().strip()
 #    print(access_token)    
 
-access_token = '${{ SECRETS.ACCESS_TOKEN }}'
+access_token = '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'
 
 def encode_contents(post_list):
     file_contents = "# 개인 기술 블로그의 최신 글 모아보기 <br> \n ## Tech \n - `Github's REST API`, [Reference](https://docs.github.com/ko/rest/repos/contents?apiVersion=2022-11-28#create-or-update-file-contents) \n - Web Scraping using `beautifulsoup4` \n - `base64 encoding` \n - Automation using `Github Actions Workflows` \n\n ## Recent Blog Posts \n\n"
@@ -123,6 +123,10 @@ def put_new_contents():
 
 def patch_new_contents():
     file_contents = encode_contents(post_list)
+    
+    with open("output.txt", "w") as file:
+        file.write(data)
+    
 
     # The commit message
     commit_message = str_now + "  |  blog posts updated"

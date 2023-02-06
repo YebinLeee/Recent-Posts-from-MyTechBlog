@@ -1,5 +1,7 @@
 name: Get Recent Post
 
+env:
+  ACCESS_TOKEN: ${{ secrets.TOKEN }}
 on:
   push 
 
