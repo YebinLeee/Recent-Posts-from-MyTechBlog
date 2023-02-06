@@ -34,4 +34,4 @@ jobs:
         push: true
 
     - name: Load Github Token
-      run: echo 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
+      run: echo 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
