@@ -34,4 +34,4 @@ jobs:
         push: true
 
     - name: Load Github Token
-      run: echo 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
+      run: echo "${{ secrets.TOKEN }}"
