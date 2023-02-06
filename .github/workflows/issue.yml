@@ -8,6 +8,20 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+    - name: Checkout code
+      uses: actions/checkout@v2.3.2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2.3.2
+      with:
+        python-version: 3.8
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+        pip freeze > requirements.txt
+
+
     - name: Run main.py
       run: |
         python main.py > output.txt
