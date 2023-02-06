@@ -19,25 +19,29 @@ jobs:
     - name: Install dependencies
       run: |
         pip install -r requirements.txt
+        pip install octokit
         pip freeze > requirements.txt
 
-
     - name: Run main.py
-      run: |
-        python main.py > output.txt
+      run: python main.py > output.txt
 
-    - name: Create Issue
-      uses: actions/github-script@v3
-      with:
-        script: |
-          const octokit = require('@octokit/rest')();
-          octokit.authenticate({
-            type: 'token',
-            token: ${{ secrets.TOKEN }}
-          });
-          octokit.issues.create({
-            owner: "${{ github.yebinleee }}",
-            repo: "${{ github.Recent-Posts-from-MyTechBlog }}",
-            title: "Recent Posts from Blog Updated",
-            body: body
-          });
+    - name: Run Python script
+      run: |
+        import octokit
+        import os
+
+        client = octokit.Client(access_token=os.environ["TOKEN"])
+
+        repository = os.environ["Recent-Posts-from-MyTechBlog"]
+        owner, repo = repository.split("/")
+
+        issue_title = "Recent Posts updated"
+        issue_body = fs.readFileSync('output.txt', 'utf8');
+
+        issue = client.issues.create(
+            owner, repo,
+            title=issue_title,
+            body=issue_body
+        )
+
+        print("Issue created with ID:", issue.number)
