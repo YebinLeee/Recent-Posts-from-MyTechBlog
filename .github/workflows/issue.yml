@@ -1,8 +1,7 @@
 name: Daily Update - Recent Posts
 
 on:
-  schedule:
-    - cron: '* * * * *'
+  push
 
 jobs:
   build:
