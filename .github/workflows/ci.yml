@@ -1,8 +1,7 @@
 name: Get Recent Post
 
 on:
-  schedule:
-    - cron: '5 * * * *' # Run every minute
+  push 
 
 jobs:
   build:
@@ -29,7 +28,7 @@ jobs:
     - name: Auto Pull
       run: |
         git pull
-        
+
     - name: Commit and push changes
       uses: EndBug/add-and-commit@v4
       with:
