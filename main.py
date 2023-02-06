@@ -65,7 +65,8 @@ def get_file_sha():
     headers_for_get = {
         "Authorization": f"Token {access_token}",
     }
-
+    file_sha = ''
+    
     # Make the GET request to get the file
     get_response = requests.get(endpoint, headers=headers_for_get)
     print(get_response.status_code)
