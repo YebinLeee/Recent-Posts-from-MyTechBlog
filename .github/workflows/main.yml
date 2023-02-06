@@ -2,7 +2,7 @@ name: Get Recent Post
 
 on:
   schedule:
-    - cron: '5 * * * *' # Run every minute
+    - cron: '* * * * *' # Run every minute
 
 jobs:
   build:
