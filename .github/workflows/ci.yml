@@ -33,8 +33,8 @@ jobs:
       uses: EndBug/add-and-commit@v4
       with:
         add: 'README.md'
-        commit_message: '$(date "+%Y-%m-%d %H:%M:%S") | Update README with recent posts'
-        push: true
+        message: $(date "+%Y-%m-%d %H:%M:%S") | Update README with recent posts
+        force: true
 
     - name: Load Github Token
       run: echo "${{ secrets.TOKEN }}"
